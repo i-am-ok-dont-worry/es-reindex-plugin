@@ -3,23 +3,17 @@ module.exports = {
     env: { jest: true, node: true, es6: true},
     extends: [
         'standard',
-        'plugin:@typescript-eslint/recommended'
     ],
-    plugins: ['vue-storefront', '@typescript-eslint'],
-    // add your custom rules here
     rules: {
         semi: 'off',
+        'indent': ["error", 2],
         'handle-callback-err': 1,
         'prefer-promise-reject-errors': 0,
-        'import/no-duplicates': ['warning'],
+        'import/no-duplicates': ['error'],
         'arrow-parens': 0,
         'prefer-arrow-callback': 1,
         'generator-star-spacing': 0,
         'no-restricted-imports': [2, { paths: ['lodash-es'] }],
-        'vue-storefront/no-corecomponent-import': 'error',
-        'vue-storefront/no-corecomponent': 'error',
-        'vue-storefront/no-corepage-import': 'error',
-        'vue-storefront/no-corepage': 'error',
         'no-console': 0,
         'no-unused-vars': 1,
         'no-throw-literal': 0

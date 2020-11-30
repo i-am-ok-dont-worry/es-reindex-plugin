@@ -14,45 +14,44 @@ const ReindexUtils = require('./utils/reindex-utils');
  * @returns {{ router: Router, route: string, pluginName: string }}
  */
 export default ({ config, db, router, cache, apiStatus, apiError }) => {
-
-    /**
+  /**
      * Schedules reindex for selected entity
      */
-    router.post('/:entity', async (req, res) => {
-        const { entity } = req.params;
-        const context = req.body;
+  router.post('/:entity', async (req, res) => {
+    const { entity } = req.params;
+    const context = req.body;
 
-        try {
-            ReindexUtils.validateContext(context);
-            await ReindexUtils.enqueueReindex(entity, context);
-            apiStatus(res, { status: 'enqueued' }, 200);
-        } catch (e) {
-            const message = e.hasOwnProperty('message') ? e.message : e;
-            apiError(res, { message });
-        }
-    });
+    try {
+      ReindexUtils.validateContext(context);
+      await ReindexUtils.enqueueReindex(entity, context);
+      apiStatus(res, { status: 'enqueued' }, 200);
+    } catch (e) {
+      const message = e.hasOwnProperty('message') ? e.message : e;
+      apiError(res, { message });
+    }
+  });
 
-    /**
+  /**
      * Returns info about reindex job
      */
-    router.get('/:entity', async (req, res) => {
-        const { entity } = req.params;
-        const context = req.body;
+  router.get('/:entity', async (req, res) => {
+    const { entity } = req.params;
+    const context = req.body;
 
-        try {
-            ReindexUtils.validateContext(context);
-            const status = await ReindexUtils.getStatus(entity, context);
-            apiStatus(res, status, 200);
-        } catch (e) {
-            const message = e.hasOwnProperty('message') ? e.message : e;
-            apiError(res, { message });
-        }
-    });
+    try {
+      ReindexUtils.validateContext(context);
+      const status = await ReindexUtils.getStatus(entity, context);
+      apiStatus(res, status, 200);
+    } catch (e) {
+      const message = e.hasOwnProperty('message') ? e.message : e;
+      apiError(res, { message });
+    }
+  });
 
-    return {
-        domainName: '@grupakmk',
-        pluginName: 'es-reindex',
-        route: '/reindex',
-        router
-    };
+  return {
+    domainName: '@grupakmk',
+    pluginName: 'es-reindex',
+    route: '/reindex',
+    router
+  };
 }
