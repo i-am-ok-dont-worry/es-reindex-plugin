@@ -1,8 +1,9 @@
 {
-  "name": "vsf-api-plugin-template",
-  "pluginname": "VSF api plugin",
+  "name": "elasticsearch-reindex-plugin",
+  "pluginname": "elasticsearch-reindex-plugin",
+  "companyname": "grupakmk",
   "version": "1.0.0",
-  "description": "Template for VSF api plugin",
+  "description": "Elastic search reindex plugin for manual selective reindex",
   "main": "src/index.js",
   "scripts": {
     "test": "test",
