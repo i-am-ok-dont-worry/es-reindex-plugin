@@ -13,7 +13,7 @@ const ReindexUtils = require('./utils/reindex-utils');
  * @param cache
  * @returns {{ router: Router, route: string, pluginName: string }}
  */
-export default ({ config, db, router, cache, apiStatus, apiError }) => {
+module.exports = ({ config, db, router, cache, apiStatus, apiError }) => {
   /**
      * Schedules reindex for selected entity
      */
