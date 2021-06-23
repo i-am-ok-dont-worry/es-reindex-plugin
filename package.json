@@ -1,5 +1,5 @@
 {
-  "name": "elasticsearch-reindex-plugin",
+  "name": "@grupakmk/elasticsearch-reindex-plugin",
   "pluginname": "elasticsearch-reindex-plugin",
   "companyname": "grupakmk",
   "version": "1.0.0",
