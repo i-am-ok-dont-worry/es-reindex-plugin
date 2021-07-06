@@ -7,8 +7,8 @@ class ReindexUtils {
     }
 
     enqueueReindex (entity, context) {
-        const { ids, priority, store } = context;
-        return this._creator.createReindexJob({ entity, ids, priority, store });
+        const { ids, priority, storeCode } = context;
+        return this._creator.createReindexJob({ entity, ids, priority, storeCode });
     }
 
     getStatus (entity, context) {
